@@ -37,6 +37,7 @@
 		A2F40B66241F910E00393B26 /* SolveCrashHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F40B60241F910E00393B26 /* SolveCrashHelp.m */; };
 		A2F40B67241F910E00393B26 /* SC_CrashMethodProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F40B61241F910E00393B26 /* SC_CrashMethodProxy.m */; };
 		A2F40B68241F910E00393B26 /* NSObject+AFCrashExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F40B65241F910E00393B26 /* NSObject+AFCrashExtension.m */; };
+		C1D1866A2434E01800F45E20 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D186692434E01800F45E20 /* NextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,8 @@
 		A2F40B63241F910E00393B26 /* SC_CrashMethodProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_CrashMethodProxy.h; sourceTree = "<group>"; };
 		A2F40B64241F910E00393B26 /* SolveCrashHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolveCrashHelp.h; sourceTree = "<group>"; };
 		A2F40B65241F910E00393B26 /* NSObject+AFCrashExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AFCrashExtension.m"; sourceTree = "<group>"; };
+		C1D186682434E01800F45E20 /* NextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
+		C1D186692434E01800F45E20 /* NextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 				A23814FC241B2B6200B321C4 /* SceneDelegate.m */,
 				A23814FE241B2B6200B321C4 /* ViewController.h */,
 				A23814FF241B2B6200B321C4 /* ViewController.m */,
+				C1D186682434E01800F45E20 /* NextViewController.h */,
+				C1D186692434E01800F45E20 /* NextViewController.m */,
 				A28F6148242C686E0035795A /* CustomButton.h */,
 				A28F6149242C686E0035795A /* CustomButton.m */,
 				A28F614B242C689E0035795A /* CustomView.h */,
@@ -409,6 +414,7 @@
 				A2F40B66241F910E00393B26 /* SolveCrashHelp.m in Sources */,
 				A249F69A242DBAAB00B97CD8 /* MJExtensionConst.m in Sources */,
 				A249F6A4242DD99300B97CD8 /* Model.m in Sources */,
+				C1D1866A2434E01800F45E20 /* NextViewController.m in Sources */,
 				A249F69C242DBAAB00B97CD8 /* NSObject+MJClass.m in Sources */,
 				A28F614A242C686E0035795A /* CustomButton.m in Sources */,
 				A249F698242DBAAB00B97CD8 /* MJProperty.m in Sources */,

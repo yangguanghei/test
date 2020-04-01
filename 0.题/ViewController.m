@@ -17,11 +17,15 @@
 #import "MJExtension.h"
 #import "MultiDelegatesManager.h"
 
+#import "NextViewController.h"
+
 @interface ViewController ()<mutilDelegatesDelegate>
 
 @property (nonatomic, strong) Person * p;
 @property (nonatomic, strong) Animal * animal;
 @property (nonatomic, strong) NSArray * array;
+@property (nonatomic, strong) NSMutableArray *  mutableArray;
+
 
 
 @end
@@ -70,7 +74,7 @@
     
 //    [self testArrayMethods];
     
-//    [self testMultiDelegates];
+    [self testMultiDelegates];
     
 //    [self testNotification];
     
@@ -87,6 +91,21 @@
 
 // 测试多代理
 - (void)testMultiDelegates{
+    
+    Person * p = [Person new];
+    __weak Person * weakP = p;
+//    NSLog(@"weakP:%p", weakP);
+//    NSLog(@"p:%p", p);
+    [self.mutableArray addObject:weakP];
+    
+    p.block = ^{
+        NSLog(@"%@", weakP.age);
+    };
+    [p eat];
+    
+    NextViewController * nextVC = [NextViewController new];
+    [self presentViewController:nextVC animated:YES completion:nil];
+    
     [[MultiDelegatesManager shareHelper] addDelegate:self];
     [[MultiDelegatesManager shareHelper] sendMessage];
 }
@@ -123,6 +142,7 @@
 // 测试block
 - (void)testBlock{
     [self test];
+    
 }
 
 void(^block)(void);
@@ -193,6 +213,12 @@ void(^block)(void);
     NSLog(@"%s", __func__);
 }
 #pragma mark --- 懒加载
+- (NSMutableArray *)mutableArray{
+    if (_mutableArray == nil) {
+        _mutableArray = [NSMutableArray array];
+    }
+    return _mutableArray;
+}
 - (Person *)p{
     if (_p == nil) {
         _p = [Person new];
