@@ -22,7 +22,7 @@
 @property (nonatomic, strong) Person * p;
 @property (nonatomic, strong) Animal * animal;
 @property (nonatomic, strong) NSArray * array;
-
+@property (nonatomic, strong) NSMutableArray * mutableArray;
 
 @end
 
@@ -70,7 +70,7 @@
     
 //    [self testArrayMethods];
     
-//    [self testMultiDelegates];
+    [self testMultiDelegates];
     
 //    [self testNotification];
     
@@ -87,6 +87,28 @@
 
 // 测试多代理
 - (void)testMultiDelegates{
+    
+    Person * p = [Person new];
+     __weak typeof(p)weakPerson = p;
+    
+//    [self.mutableArray addObject:weakPerson];
+    
+    p.block = ^{
+        __strong typeof(weakPerson) strongP = weakPerson;
+//        NSLog(@"age:%@", p.age);
+        NSLog(@"age:%@", strongP.age);
+//        NSLog(@"age:%@", weakPerson.age);
+        sleep(3);
+        NSLog(@"睡眠结束");
+    };
+    [weakPerson eat];
+    
+    NSLog(@"1p:%@", p);
+    self.array = [NSArray arrayWithObjects:p, nil];
+    for (Person * p in self.array) {
+        NSLog(@"2p:%@", p);
+    }
+    
     [[MultiDelegatesManager shareHelper] addDelegate:self];
     [[MultiDelegatesManager shareHelper] sendMessage];
 }
@@ -193,6 +215,12 @@ void(^block)(void);
     NSLog(@"%s", __func__);
 }
 #pragma mark --- 懒加载
+- (NSMutableArray *)mutableArray{
+    if (_mutableArray == nil) {
+        _mutableArray = [NSMutableArray array];
+    }
+    return _mutableArray;
+}
 - (Person *)p{
     if (_p == nil) {
         _p = [Person new];

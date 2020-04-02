@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic, assign) NSInteger age;
 @property (nonatomic, copy) NSString * age;
 @property (nonatomic, assign) Animal * animal;
+@property (nonatomic, copy) void(^block)(void);
 
 - (void)eat;              
 

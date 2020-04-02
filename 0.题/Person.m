@@ -15,8 +15,13 @@
 
 - (void)eat{
     NSLog(@"人吃...");
+    if (self.block) {
+        self.block();
+    }
 }
-
+- (void)dealloc{
+    NSLog(@"人死了...");
+}
 
 
 
