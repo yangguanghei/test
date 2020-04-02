@@ -19,6 +19,19 @@
         self.block();
     }
 }
+- (void)run1{
+    for (NSInteger i = 0; i < 1000; i ++) {
+        NSLog(@"%@", self);
+    }
+}
+- (void)run2{
+    for (NSInteger i = 0; i < 1000; i ++) {
+        NSLog(@"%@", self);
+    }
+}
+
+
+
 - (void)dealloc{
     NSLog(@"人死了...");
 }

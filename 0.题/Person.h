@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) Animal * animal;
 @property (nonatomic, copy) void(^block)(void);
 
-- (void)eat;              
+- (void)eat;
+- (void)run1;
+- (void)run2;
 
 @end
 

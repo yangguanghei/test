@@ -17,6 +17,8 @@
 #import "MJExtension.h"
 #import "MultiDelegatesManager.h"
 
+#import "NextViewController.h"
+
 @interface ViewController ()<mutilDelegatesDelegate>
 
 @property (nonatomic, strong) Person * p;
@@ -89,25 +91,18 @@
 - (void)testMultiDelegates{
     
     Person * p = [Person new];
-     __weak typeof(p)weakPerson = p;
-    
-//    [self.mutableArray addObject:weakPerson];
+    __weak Person * weakP = p;
+//    NSLog(@"weakP:%p", weakP);
+//    NSLog(@"p:%p", p);
+    [self.mutableArray addObject:weakP];
     
     p.block = ^{
-        __strong typeof(weakPerson) strongP = weakPerson;
-//        NSLog(@"age:%@", p.age);
-        NSLog(@"age:%@", strongP.age);
-//        NSLog(@"age:%@", weakPerson.age);
-        sleep(3);
-        NSLog(@"睡眠结束");
+        NSLog(@"%@", weakP.age);
     };
-    [weakPerson eat];
+    [p eat];
     
-    NSLog(@"1p:%@", p);
-    self.array = [NSArray arrayWithObjects:p, nil];
-    for (Person * p in self.array) {
-        NSLog(@"2p:%@", p);
-    }
+    NextViewController * nextVC = [NextViewController new];
+    [self presentViewController:nextVC animated:YES completion:nil];
     
     [[MultiDelegatesManager shareHelper] addDelegate:self];
     [[MultiDelegatesManager shareHelper] sendMessage];
@@ -145,6 +140,7 @@
 // 测试block
 - (void)testBlock{
     [self test];
+    
 }
 
 void(^block)(void);
