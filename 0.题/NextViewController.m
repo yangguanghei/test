@@ -54,9 +54,11 @@
 //        __strong typeof(weakP) strongP = weakP;
 //        NSLog(@"%@", strongP);
         NSLog(@"block中的p:%@", weakP);
-//        [weakP run1];
-//        
-//        [weakP run2];
+        [weakP run1];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [weakP run2];
+        });
+        
         NSLog(@"block中的p:%@", weakP);
         
     };

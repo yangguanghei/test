@@ -21,12 +21,12 @@
 }
 - (void)run1{
     for (NSInteger i = 0; i < 1000; i ++) {
-        NSLog(@"%@", self);
+        NSLog(@"%lu", i);
     }
 }
 - (void)run2{
     for (NSInteger i = 0; i < 1000; i ++) {
-        NSLog(@"%@", self);
+        NSLog(@"%lu", i);
     }
 }
 
