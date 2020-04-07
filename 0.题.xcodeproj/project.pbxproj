@@ -37,6 +37,7 @@
 		A2F40B66241F910E00393B26 /* SolveCrashHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F40B60241F910E00393B26 /* SolveCrashHelp.m */; };
 		A2F40B67241F910E00393B26 /* SC_CrashMethodProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F40B61241F910E00393B26 /* SC_CrashMethodProxy.m */; };
 		A2F40B68241F910E00393B26 /* NSObject+AFCrashExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F40B65241F910E00393B26 /* NSObject+AFCrashExtension.m */; };
+		C120646D243B3015005E1FD0 /* LSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = C120646C243B3015005E1FD0 /* LSTimer.m */; };
 		C1D1866A2434E01800F45E20 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D186692434E01800F45E20 /* NextViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,8 @@
 		A2F40B63241F910E00393B26 /* SC_CrashMethodProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_CrashMethodProxy.h; sourceTree = "<group>"; };
 		A2F40B64241F910E00393B26 /* SolveCrashHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolveCrashHelp.h; sourceTree = "<group>"; };
 		A2F40B65241F910E00393B26 /* NSObject+AFCrashExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AFCrashExtension.m"; sourceTree = "<group>"; };
+		C120646B243B3015005E1FD0 /* LSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSTimer.h; sourceTree = "<group>"; };
+		C120646C243B3015005E1FD0 /* LSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSTimer.m; sourceTree = "<group>"; };
 		C1D186682434E01800F45E20 /* NextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
 		C1D186692434E01800F45E20 /* NextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +172,7 @@
 		A23814F7241B2B6200B321C4 /* 0.题 */ = {
 			isa = PBXGroup;
 			children = (
+				C120646A243B3015005E1FD0 /* LSTimer */,
 				A249F67D242DBAAA00B97CD8 /* MJExtension */,
 				A2F40B5F241F910E00393B26 /* SolveCrash */,
 				A23814F8241B2B6200B321C4 /* AppDelegate.h */,
@@ -267,6 +271,15 @@
 				A2F40B60241F910E00393B26 /* SolveCrashHelp.m */,
 			);
 			path = SolveCrash;
+			sourceTree = "<group>";
+		};
+		C120646A243B3015005E1FD0 /* LSTimer */ = {
+			isa = PBXGroup;
+			children = (
+				C120646B243B3015005E1FD0 /* LSTimer.h */,
+				C120646C243B3015005E1FD0 /* LSTimer.m */,
+			);
+			path = LSTimer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +438,7 @@
 				A2F40B68241F910E00393B26 /* NSObject+AFCrashExtension.m in Sources */,
 				A23814FD241B2B6200B321C4 /* SceneDelegate.m in Sources */,
 				A249F699242DBAAB00B97CD8 /* NSObject+MJCoding.m in Sources */,
+				C120646D243B3015005E1FD0 /* LSTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

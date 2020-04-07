@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NextViewController : UIViewController
 
+@property (nonatomic, copy) void(^backBlock)  (NSString * str);
+
 @end
 
 NS_ASSUME_NONNULL_END

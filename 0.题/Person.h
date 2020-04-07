@@ -23,6 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)run1;
 - (void)run2;
 
+- (id)initWithAge:(NSString *)age;
++ (id)perWithAge:(NSString *)age;
++ (instancetype)person;
+
 @end
 
 NS_ASSUME_NONNULL_END

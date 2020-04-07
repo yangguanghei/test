@@ -13,6 +13,24 @@
 
 @implementation Person
 
+- (id)initWithAge:(NSString *)age{
+    self = [super init];
+    if (self) {
+        self.age = age;
+    }
+    return self;
+}
++ (id)perWithAge:(NSString *)age{
+    Animal * a = [Animal new];
+    return a;
+}
++ (instancetype)person{
+//    Person * p = [[self alloc] init];
+//    return p;
+    Animal * a = [Animal new];
+    return a;
+}
+
 - (void)eat{
     NSLog(@"人吃...");
     if (self.block) {
@@ -33,7 +51,7 @@
 
 
 - (void)dealloc{
-    NSLog(@"人销毁了...");
+    NSLog(@"人死了...");
 }
 
 

@@ -19,5 +19,7 @@
 - (void)sleep{
     NSLog(@"动物睡觉...");
 }
-
+- (void)dealloc{
+    NSLog(@"动物死了...");
+}
 @end

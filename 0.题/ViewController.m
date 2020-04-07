@@ -18,6 +18,7 @@
 #import "MultiDelegatesManager.h"
 
 #import "NextViewController.h"
+#import "LSTimer.h"
 
 @interface ViewController ()<mutilDelegatesDelegate>
 
@@ -25,7 +26,8 @@
 @property (nonatomic, strong) Animal * animal;
 @property (nonatomic, strong) NSArray * array;
 @property (nonatomic, strong) NSMutableArray *  mutableArray;
-
+@property (nonatomic, strong) NSTimer *  timer;;
+@property (nonatomic, strong) LSTimer * gcdTimer;
 
 
 @end
@@ -74,9 +76,54 @@
     
 //    [self testArrayMethods];
     
-    [self testMultiDelegates];
+//    [self testMultiDelegates];
     
 //    [self testNotification];
+    
+//    [self testInstancetypeAndid];
+    
+    [self testTimer];
+    
+}
+/// 测试NSTimer
+- (void)testTimer{
+
+//    [[self gcdTimer] start];
+    
+    
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    
+    
+//    NSThread * thread = [[NSThread alloc] initWithTarget:self selector:@selector(startTimer) object:nil];
+//    [thread start];
+}
+- (void)startTimer{
+    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] run];
+}
+- (void)updateTimer{
+    NSLog(@"timer test");
+    static NSInteger time = 0;
+    time ++;
+    if (time > 100) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    
+    int count = 0;
+    for (int i = 0; i < 1000000000; i++) {
+    count += i;
+    }
+    
+}
+
+// 测试instancetype和id
+- (void)testInstancetypeAndid{
+    Person * p = [[Person alloc] initWithAge:@"11"];
+    NSLog(@"年龄：%@", p.age);
+    [[Person perWithAge:@"2"] run1];
+    [[Person person] run1];
     
 }
 
@@ -197,22 +244,26 @@ void(^block)(void);
 }
 // 测试野指针
 - (void)testWildPointer{
-//    NSLog(@"%s", __func__);
-//    [self.p eat];
     
-    UIButton * view1 = [UIButton new];
-    [self.view addSubview:view1];
-//    [view1 release];
-//    view1 = nil;
+    NextViewController * nextVC = [NextViewController new];
+    [self presentViewController:nextVC animated:YES completion:nil];
+    nextVC.backBlock = ^(NSString * _Nonnull str) {
+        NSLog(@"str:%@", str);
+    };
     
-    UIView * view2 = [UIView new];
-    [view1 addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];;
-    [self.view addSubview:view2];
 }
 - (void)click{
     NSLog(@"%s", __func__);
 }
 #pragma mark --- 懒加载
+- (LSTimer *)gcdTimer{
+    if (_gcdTimer == nil) {
+        _gcdTimer = [[LSTimer alloc] initWithTimeInterval:1.0 andWaitTime:0 eventHandler:^{
+            [self updateTimer];
+        }];
+    }
+    return _gcdTimer;
+}
 - (NSMutableArray *)mutableArray{
     if (_mutableArray == nil) {
         _mutableArray = [NSMutableArray array];
