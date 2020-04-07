@@ -30,7 +30,12 @@
     }
 }
 
-
+- (NSMutableArray *)mutableArray{
+    if (_mutableArray == nil) {
+        _mutableArray = [NSMutableArray array];
+    }
+    return _mutableArray;
+}
 
 - (void)dealloc{
     NSLog(@"人死了...");
