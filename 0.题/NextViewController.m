@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) void(^block)  (void);
 @property (nonatomic, strong) Person *  p;;
-
+@property (nonatomic, strong) NSThread * thread;
 
 @end
 
@@ -26,18 +26,9 @@
     
     self.view.backgroundColor = [UIColor yellowColor];
     
-//    __weak typeof(self) weakSelf = self;
-//    self.block =^{
-//        NSLog(@"%@", weakSelf);
-//        sleep(10);
-//        NSLog(@"%@", weakSelf);
-//
-//    };
+
     
-//    self.p = [Person new];
-//    self.p.block = ^{
-//        NSLog(@"%@", self.p);
-//    };
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -83,17 +74,8 @@
 }
 
 - (void)dealloc{
-    NSLog(@"%s", __func__);
+    NSLog(@"NextViewController释放了...");
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -17,11 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic, assign) NSInteger age;
 @property (nonatomic, copy) NSString * age;
 @property (nonatomic, assign) Animal * animal;
-@property (nonatomic, copy) void(^block)  (void);
+@property (nonatomic, strong) id objct;
+@property (nonatomic, copy) void(^block)(void);
 
 - (void)eat;
 - (void)run1;
 - (void)run2;
+@property (nonatomic, strong) NSMutableArray * mutableArray;
 
 - (id)initWithAge:(NSString *)age;
 + (id)perWithAge:(NSString *)age;
