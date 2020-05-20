@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Animal : NSObject
 
+@property (nonatomic, copy) NSString *  name;
+@property (nonatomic, strong) Person *  p;
+
 - (void)eat;
 
 @end

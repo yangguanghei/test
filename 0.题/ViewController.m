@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSTimer *  timer;;
 @property (nonatomic, strong) LSTimer * gcdTimer;
 
+@property (nonatomic, strong) NSObject *   name;
+
 
 @end
 
@@ -44,6 +46,8 @@
     Animal * animal = [[Animal alloc] init];
     self.p.animal = animal;
     
+    self.animal = [Animal new];
+    self.animal.name = @"name1";
     [self testBlock];
     
     CustomView * yellowView = [[CustomView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
@@ -82,8 +86,19 @@
     
 //    [self testInstancetypeAndid];
     
-    [self testTimer];
+//    [self testTimer];
+//    [self testAtomic];
     
+}
+// 测试atomic
+- (void)testAtomic{
+    for (NSInteger i = 0; i < 10000; i ++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            self.animal = [Animal new];
+//            self.name = [NSObject new];
+        });
+        
+    }
 }
 /// 测试NSTimer
 - (void)testTimer{
@@ -199,12 +214,15 @@ void(^block)(void);
     p.age = @"1";
     block = ^{  // 栈block
         NSLog(@"age:%d", age);
-        p.age = @"2";
+//        p.age = @"2";
 //        p = [Person new];
-        NSLog(@"%@", p.age);
+        NSLog(@"p.age:%@", p.age);
+        NSLog(@"animal.name:%@", self.animal.name);
     };
+    p.age = @"2";
+    self.animal.name = @"改变了..";
     block();
-    NSLog(@"%@", p.age);
+    NSLog(@"p.age:%@", p.age);
 //    block = [^{ // 堆block
 //        NSLog(@"age:%d", age);
 //    } copy];
