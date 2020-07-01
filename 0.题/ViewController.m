@@ -20,6 +20,8 @@
 #import "NextViewController.h"
 #import "LSTimer.h"
 
+int globalNum = 10;
+
 @interface ViewController ()<mutilDelegatesDelegate>
 
 @property (nonatomic, strong) Person * p;
@@ -30,11 +32,12 @@
 @property (nonatomic, strong) LSTimer * gcdTimer;
 
 @property (nonatomic, strong) NSObject *   name;
-
-
+@property (nonatomic, strong) NSArray * testBlockArray;
 @end
 
 @implementation ViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +56,11 @@
     CustomView * yellowView = [[CustomView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     [self.view addSubview:yellowView];
     yellowView.backgroundColor = [UIColor yellowColor];
+    
+    NSLog(@"self.view:%@", self.view);
 }
+
+
 
 - (void)sleep{
     NSLog(@"睡觉...");
@@ -74,7 +81,7 @@
     
 //    block();
     
-//    [self testStrong];
+    [self testStrong];
     
 //    [self testDictToModel];
     
@@ -95,9 +102,7 @@
     for (NSInteger i = 0; i < 10000; i ++) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             self.animal = [Animal new];
-//            self.name = [NSObject new];
         });
-        
     }
 }
 /// 测试NSTimer
@@ -144,8 +149,9 @@
 
 // 测试通知同步
 - (void)testNotification{
+    // 发送通知的线程和响应通知的线程是同一个线程
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSLog(@"当前线程：%@", [NSThread currentThread]);
+        NSLog(@"发送通知时的当前线程：%@", [NSThread currentThread]);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"testNotification" object:nil userInfo:nil];
     });
     NSLog(@"2222");
@@ -197,7 +203,6 @@
     self.array = mutableArray;
     [mutableArray addObject:@"3"];
     NSLog(@"array:%@", self.array);
-    
     NSLog(@"array:       %p", self.array);
     NSLog(@"mutableArray:%p", mutableArray);
 }
@@ -205,6 +210,17 @@
 - (void)testBlock{
     [self test];
     
+    // 带有参数以及返回值的block
+    int(^block)(int, int) = ^(int a, int b){
+        if (a > b) {
+            return a;
+        }else {
+            return  b;
+        }
+    };
+    
+    int num = block(1, 2);
+    NSLog(@"num:%d", num);
 }
 
 void(^block)(void);
@@ -212,23 +228,37 @@ void(^block)(void);
     int age = 10;
      Person * p = [Person new];
     p.age = @"1";
+    
+    
+    __block NSMutableArray * testArray = [NSMutableArray array];
+    [testArray addObject:@"1"];
+    
+    p.dataSource = testArray;
+    
     block = ^{  // 栈block
-        NSLog(@"age:%d", age);
-//        p.age = @"2";
-//        p = [Person new];
-        NSLog(@"p.age:%@", p.age);
-        NSLog(@"animal.name:%@", self.animal.name);
+        p.age = @"3";   // 可以修改一个对象的成员变量
+        NSArray * array = @[@"1", @"2"];
+        self.testBlockArray = [NSArray arrayWithArray:array];
+//        testArray = [NSMutableArray arrayWithArray:array];
+
+        testArray = [NSMutableArray arrayWithArray:array];
+        NSLog(@"%@", testArray);
+        globalNum = 4;
     };
+    
     p.age = @"2";
     self.animal.name = @"改变了..";
     block();
+    
+    [testArray addObject:@"3"];
+    NSLog(@"%@", testArray);
+    
     NSLog(@"p.age:%@", p.age);
 //    block = [^{ // 堆block
 //        NSLog(@"age:%d", age);
 //    } copy];
     NSLog(@"block类型：%@", [block class]);
 }
-
 
 // 测试navigationController地址
 - (void)testNavCDress{

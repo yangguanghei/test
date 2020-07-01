@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * age;
 @property (nonatomic, assign) Animal * animal;
 @property (nonatomic, strong) id objct;
+@property (nonatomic, strong) NSArray * dataSource;
 @property (nonatomic, copy) void(^block)(void);
 
 - (void)eat;

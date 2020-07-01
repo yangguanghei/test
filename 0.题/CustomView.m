@@ -10,6 +10,8 @@
 
 #import "CustomButton.h"
 
+static CustomView * cv;
+
 @interface CustomView ()
 
 @property (nonatomic, strong) CustomButton * btn;
@@ -17,6 +19,15 @@
 @end
 
 @implementation CustomView
+
+
++ (instancetype)shareCustomView{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cv = [[CustomView alloc] init];
+    });
+    return cv;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];

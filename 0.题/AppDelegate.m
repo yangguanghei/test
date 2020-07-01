@@ -40,7 +40,7 @@
 
 
 - (void)testNotification:(NSNotification *)noti{
-    NSLog(@"当前线程：%@", [NSThread currentThread]);
+    NSLog(@"响应通知的当前线程：%@", [NSThread currentThread]);
     NSLog(@"收到通知:%@", noti.userInfo);
     sleep(3);
     NSLog(@"执行完通知的操作...");

@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CustomView : UIImageView
 
+
++ (instancetype)shareCustomView;
+
 @end
 
 NS_ASSUME_NONNULL_END
