@@ -33,11 +33,17 @@
     
     NSLog(@"%s:nav:%p", __func__, nav);
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotification:) name:@"testNotification" object:nil];
-    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotification:) name:@"testNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"testNotification" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        NSLog(@"响应通知的当前线程1：%@", [NSThread currentThread]);
+    }];
+//    [[NSNotificationCenter defaultCenter] addObserver:self forKeyPath:@"" options:NSKeyValueObservingOptionNew context:nil];
     return YES;
 }
 
+- (void)dealloc{
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)testNotification:(NSNotification *)noti{
     NSLog(@"响应通知的当前线程：%@", [NSThread currentThread]);

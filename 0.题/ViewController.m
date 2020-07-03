@@ -81,7 +81,7 @@ int globalNum = 10;
     
 //    block();
     
-    [self testStrong];
+//    [self testStrong];
     
 //    [self testDictToModel];
     
@@ -89,7 +89,7 @@ int globalNum = 10;
     
 //    [self testMultiDelegates];
     
-//    [self testNotification];
+    [self testNotification];
     
 //    [self testInstancetypeAndid];
     
