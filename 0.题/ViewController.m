@@ -221,6 +221,19 @@ int globalNum = 10;
     
     int num = block(1, 2);
     NSLog(@"num:%d", num);
+    
+    Animal * a = [Animal new];
+    void(^testblock)(void) = ^{
+        NSLog(@"a:%@", a);
+    };
+    [self func:testblock];
+    
+    [self func:^{
+        NSLog(@"a:%@", a);
+    }];
+}
+- (void)func:(void(^)(void))complete{
+    NSLog(@"complete:%@", [complete class]);
 }
 
 void(^block)(void);
